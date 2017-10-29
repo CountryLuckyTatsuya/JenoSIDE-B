@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import exception.SQLRuntimeException;
+
 public class DBUtil {
 
 	private static String driver = "com.mysql.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost/test";
+	private static String url = "jdbc:mysql://localhost/JenoSide_db";
 	private static String user = "root";
-	private static String password = "admin";
+	private static String password = "";
 
 	static {
 		try {
@@ -45,8 +47,8 @@ public class DBUtil {
 			if (con != null) {
 				con.commit();
 			}
-		} catch (Exception e) {
-			throw new SQLException();
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
 		}
 	}
 
@@ -55,13 +57,13 @@ public class DBUtil {
 	 * @param con
 	 * @throws SQLException
 	 */
-	public static void rollback(Connection con) throws SQLException {
+	public static void rollback(Connection con) {
 		try {
 			if (con != null) {
 				con.rollback();
 			}
-		} catch (Exception e) {
-			throw new SQLException();
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
 		}
 	}
 
@@ -70,14 +72,14 @@ public class DBUtil {
 	 * @param con
 	 * @throws SQLException
 	 */
-	public static void close(Connection con) throws SQLException {
+	public static void close(Connection con) {
 
 		try {
 			if (con != null) {
 				con.close();
 			}
-		} catch (Exception e) {
-			throw new SQLException();
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
 		}
 	}
 
