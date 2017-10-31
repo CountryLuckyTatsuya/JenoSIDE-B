@@ -15,7 +15,6 @@ public class TopService {
 	public static void insertMessage(String message) {		
 		
 		Connection conn = null;
-		
 		try {
 			// DBへのコネクションを作成する
 			conn = getConnection();
