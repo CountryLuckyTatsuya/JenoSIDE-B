@@ -67,20 +67,6 @@ public class DBUtil {
 		}
 	}
 
-	/**
-	 * クローズ処理（コネクションの解放）を行う
-	 * @param con
-	 * @throws SQLException
-	 */
-	public static void close(Connection con) {
-
-		try {
-			if (con != null) {
-				con.close();
-			}
-		} catch (SQLException e) {
-			throw new SQLRuntimeException(e);
-		}
-	}
+	
 
 }

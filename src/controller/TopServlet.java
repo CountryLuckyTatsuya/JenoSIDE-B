@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.TopService;
+import bean.Messages;
+import service.MessagesService;
 
 /**
  * Servlet implementation class TopServlet
@@ -22,6 +24,9 @@ public class TopServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// 全てのメッセージを取得
+		List<Messages> messages = MessagesService.selectAllMessages();
 		
 		String message = "ここに記入";
 		request.setAttribute("message", message);
@@ -36,6 +41,6 @@ public class TopServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String message = request.getParameter("message");
-		TopService.insertMessage(message);
+		MessagesService.insertPostMessages(message);
 	}
 }
