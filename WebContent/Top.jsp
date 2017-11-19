@@ -23,7 +23,7 @@
 			  <option value="11">11</option>
 			  <option value="12">12</option>
 			</select>
-			<input type="text" name="defaultMessage" placeholder="${defaultMessage}">
+			<input type="text" name="message" placeholder="${defaultMessage}">
 			<input type="submit" value="送信" />
 		</form>
 		<br>
