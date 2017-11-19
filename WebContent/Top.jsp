@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -22,8 +23,14 @@
 			  <option value="11">11</option>
 			  <option value="12">12</option>
 			</select>
-			<input type="text" name="message" placeholder="${message}">
+			<input type="text" name="defaultMessage" placeholder="${defaultMessage}">
 			<input type="submit" value="送信" />
 		</form>
+		<br>
+		<c:forEach var="postMessages" items="${postMessages}">
+			投稿文：<c:out value="${postMessages.message} "/>
+			<c:out value="${postMessages.postDate}"/><br>
+			--------------------------<br>
+		</c:forEach>
 	</body>
 </html>

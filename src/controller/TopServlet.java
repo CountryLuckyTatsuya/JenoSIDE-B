@@ -26,10 +26,11 @@ public class TopServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// 全てのメッセージを取得
-		List<Messages> messages = MessagesService.selectAllMessages();
+		List<Messages> postMessages = MessagesService.selectAllMessages();
+		request.setAttribute("postMessages", postMessages);
 		
-		String message = "ここに記入";
-		request.setAttribute("message", message);
+		String defaultMessage = "ここに記入";
+		request.setAttribute("defaultMessage", defaultMessage);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/Top.jsp");
 		dispatcher.forward(request,response);
